@@ -8,7 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 // variables
 let userText = "";
 let errorCount = 0;
-let startTime;
+let startTime ;
 let questionText = "";
 
 // Load and display question
@@ -74,6 +74,7 @@ const gameOver = () => {
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
+  
   modalBackground.classList.toggle("hidden");
   // clear user text
   display.innerHTML = "";
@@ -90,7 +91,7 @@ const gameOver = () => {
   addHistory(questionText, timeTaken, errorCount);
 
   // restart everything
-  startTime = null;
+  startTime ;
   errorCount = 0;
   userText = "";
   display.classList.add("inactive");
@@ -104,22 +105,23 @@ const closeModal = () => {
 const start = () => {
   
   // If already started, do not start again
-  if (startTime) return;
+  if (startTime) return ;
 
   let count = 3;
   
   countdownOverlay.style.display = "flex";
+ 
 
   const startCountdown = setInterval(() => {
    
-    countdownOverlay.innerHTML = '<h1></h1>';
+    countdownOverlay.innerHTML = `<h1>${count}</h1>`;
 
     // finished timer
     if (count == 0) {
-      console.log(count)
+      
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
