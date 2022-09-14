@@ -1,6 +1,6 @@
 const display = document.getElementById("display");
 const question = document.getElementById("question");
-const startBtn = document.getElementById("start");
+const startBtn = document.getElementById("starts");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
@@ -32,6 +32,7 @@ const typeController = (e) => {
   // these are the valid character we are allowing to type
   const validLetters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890!@#$%^&*()_+-={}[]'\".,?";
+    
 
   // if it is not a valid character like Control/Alt then skip displaying anything
   if (!validLetters.includes(newLetter)) {
@@ -55,6 +56,7 @@ const typeController = (e) => {
 };
 
 const validate = (key) => {
+ 
   if (key === questionText[userText.length - 1]) {
     return true;
   }
@@ -100,17 +102,21 @@ const closeModal = () => {
 };
 
 const start = () => {
+  
   // If already started, do not start again
   if (startTime) return;
 
   let count = 3;
+  
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = '<h1>${count}</h1>';
+   
+    countdownOverlay.innerHTML = '<h1></h1>';
 
     // finished timer
     if (count == 0) {
+      console.log(count)
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
       countdownOverlay.style.display = "flex";
